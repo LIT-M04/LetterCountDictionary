@@ -1,0 +1,35 @@
+﻿@using MvcApplication25.Models
+@model MvcApplication25.Models.IndexViewModel
+
+
+<div class="well">
+    <div class="row">
+        <form action="/home/index" method="POST">
+            <div class="col-md-8">
+                <textarea name="text" class="form-control" rows="20">@Model.Text</textarea>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-primary btn-block">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (Model.LetterCount != null)
+{
+    <h1>List Elapsed: @Model.ListElapsed</h1>
+    <h1>Dictionary Elapsed: @Model.DictionaryElapsed</h1>
+    <table class="table table-hover table-striped">
+        <tr>
+            <th>Letter</th>
+            <th>Count</th>
+        </tr>
+        @foreach (KeyValuePair<char,int > kvp in Model.LetterCountDictionary)
+        {
+            <tr>
+                <td>@kvp.Key</td>
+                <td>@kvp.Value</td>
+            </tr>
+        }
+    </table>
+}
