@@ -8,6 +8,11 @@ using MvcApplication25.Models;
 
 namespace MvcApplication25.Controllers
 {
+    public class Person
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+    }
     public class HomeController : Controller
     {
         public ActionResult Index(string text)
@@ -29,6 +34,17 @@ namespace MvcApplication25.Controllers
             return View(viewModel);
         }
 
+        public ActionResult List()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public void ListPost(List<Person> people )
+        {
+
+            people.GetHashCode();
+        }
 
         private IEnumerable<LetterCount> GetWordCount(string text)
         {
